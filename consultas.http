@@ -1,10 +1,11 @@
+### Obtencion de todos los productos
 GET http://localhost:1234/productos/
 
-###
+### Obtención de un producto específico
 
 GET http://localhost:1234/productos/3/
 
-###
+### Agregado de un producto nuevo
 POST http://localhost:1234/productos/
 Content-Type: application/json
 
@@ -15,11 +16,14 @@ Content-Type: application/json
     "precio": 150.15
 }
 
-###
+### Actualización de un producto
 
 PATCH http://localhost:1234/productos/10/
 Content-Type: application/json
 
 {
-    "nombre": "Mixer multiuso ACME PODEROSO",
+    "nombre": "Mixer multiuso ACME PODEROSO"
 }
+
+### Borrado de un producto
+DELETE http://localhost:1234/productos/8

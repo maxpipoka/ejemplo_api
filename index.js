@@ -53,9 +53,11 @@ app.post('/productos/', (req, res) => {
 
 app.patch('/productos/:id', (req, res) => {
     let idProductoAEditar = parseInt(req.params.id)
-    let productoEncontrado = datos.productos.find((producto) => producto.id === idProductoAEditar)
+    let productoAActualizar = datos.productos.find((producto) => producto.id === idProductoAEditar)
+    let indiceProducto = datos.productos.indexOf(productoAActualizar)
 
-    if (!productoEncontrado) {
+
+    if (!productoAActualizar) {
         res.status(204).send('Producto no encontrado')
     }
 
@@ -67,21 +69,31 @@ app.patch('/productos/:id', (req, res) => {
 
     req.on('end', () => {
         const data = JSON.parse(bodyTemp)
+        req.body = data
         
         if(data.nombre){
-            productoEncontrado.nombre = data.nombre
+            productoAActualizar.nombre = data.nombre
         }
         
         if (data.tipo){
-            productoEncontrado.tipo = data.tipo
+            productoAActualizar.tipo = data.tipo
         }
 
         if (data.precio){
-            productoEncontrado.precio = data.precio
+            productoAActualizar.precio = data.precio
         }
-        datos.productos.push(productoEncontrado)
-    })
 
+        res.status(200).send('Producto actualizado')
+    })
+})
+
+app.delete('/productos/:id', (req, res) => {
+    let idProductoABorrar = parseInt(req.params.id)
+    let productoABorrar = datos.productos.find((producto) => producto.id === idProductoABorrar)
+    let indiceProductoABorrar = datos.productos.indexOf(productoABorrar)
+
+    datos.productos.splice(indiceProductoABorrar, 1)
+    res.status(200).send('Producto borrado: ' + idProductoABorrar + ' ' + indiceProductoABorrar)
 })
 
 app.use((req, res) => {
