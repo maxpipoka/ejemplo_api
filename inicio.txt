@@ -1,0 +1,17 @@
+    <h1>Bienvenido a la API</h1>
+<p>Los comandos disponibles son:</p>
+<ul>
+    <li>GET: /productos</li>
+    <li>GET: /productos/id</li>
+    <li>POST: /productos</li>
+    <li>DELETE: /productos/id</li>
+    <li>PUT: /productos/id</li>
+    <li>PATCH: /productos/id</li>
+    <li>GET: /usuarios</li>
+    <li>GET: /usuarios/id</li>
+    <li>POST: /usuarios</li>
+    <li>DELETE: /usuarios/id</li>
+    <li>PUT: /usuarios/id</li>
+    <li>PATCH: /usuarios/id</li>
+</ul>
+

@@ -1,0 +1,25 @@
+GET http://localhost:1234/productos/
+
+###
+
+GET http://localhost:1234/productos/3/
+
+###
+POST http://localhost:1234/productos/
+Content-Type: application/json
+
+{
+    "id": 11,
+    "nombre": "Mixer multiuso ACME",
+    "tipo": "Electrodoméstico de cocina",
+    "precio": 150.15
+}
+
+###
+
+PATCH http://localhost:1234/productos/10/
+Content-Type: application/json
+
+{
+    "nombre": "Mixer multiuso ACME PODEROSO",
+}
