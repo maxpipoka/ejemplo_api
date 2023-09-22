@@ -5,8 +5,8 @@ GET http://localhost:1234/productos/
 
 GET http://localhost:1234/productos/3/
 
-### Agregado de un producto nuevo
-POST http://localhost:1234/productos/
+### Agregado de un producto nuevo, el body lleva el json con el objeto
+POST http://localhost:1234/productos
 Content-Type: application/json
 
 {
@@ -16,9 +16,9 @@ Content-Type: application/json
     "precio": 150.15
 }
 
-### Actualización de un producto
+### Actualización de un producto, el body lleva solo el atributo a modificar
 
-PATCH http://localhost:1234/productos/10/
+PATCH http://localhost:1234/productos/10
 Content-Type: application/json
 
 {

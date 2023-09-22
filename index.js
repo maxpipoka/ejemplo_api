@@ -19,8 +19,9 @@ app.get('/productos/', (req, res) =>{
         let allProducts = datos.productos
 
         res.status(200).json(allProducts)
+
     } catch (error) {
-        res.status(204).send('No hay productos que mostrar.')
+        res.status(204).json({"message": error})
     }
 })
 
@@ -30,35 +31,39 @@ app.get('/productos/:id', (req, res) => {
         let productoEncontrado = datos.productos.find((producto) => producto.id === productoId)
 
         res.status(200).json(productoEncontrado)
+
     } catch (error) {
-        res.status(204).send('No hay productos que mostrar.')
+        res.status(204).json({"message": error})
     }
 })
 
-app.post('/productos/', (req, res) => {
-    let bodyTemp = ''
+app.post('/productos', (req, res) => {
+    try {
+        let bodyTemp = ''
 
-    req.on('data', (chunk) => {
-        bodyTemp += chunk.toString()
-    })
+        req.on('data', (chunk) => {
+            bodyTemp += chunk.toString()
+        })
+    
+        req.on('end', () => {
+            const data = JSON.parse(bodyTemp)
+            req.body = data
+            datos.productos.push(req.body)
+        })
+    
+        res.status(201).json({"message": "success"})
 
-    req.on('end', () => {
-        const data = JSON.parse(bodyTemp)
-        req.body = data
-        datos.productos.push(req.body)
-    })
-
-    res.status(201).send('Producto agregado')
+    } catch (error) {
+        res.status(204).json({"message": "error"})
+    }
 })
 
 app.patch('/productos/:id', (req, res) => {
     let idProductoAEditar = parseInt(req.params.id)
     let productoAActualizar = datos.productos.find((producto) => producto.id === idProductoAEditar)
-    let indiceProducto = datos.productos.indexOf(productoAActualizar)
-
 
     if (!productoAActualizar) {
-        res.status(204).send('Producto no encontrado')
+        res.status(204).json({"message":"Producto no encontrado"})
     }
 
     let bodyTemp = ''
@@ -90,10 +95,19 @@ app.patch('/productos/:id', (req, res) => {
 app.delete('/productos/:id', (req, res) => {
     let idProductoABorrar = parseInt(req.params.id)
     let productoABorrar = datos.productos.find((producto) => producto.id === idProductoABorrar)
-    let indiceProductoABorrar = datos.productos.indexOf(productoABorrar)
 
-    datos.productos.splice(indiceProductoABorrar, 1)
-    res.status(200).send('Producto borrado: ' + idProductoABorrar + ' ' + indiceProductoABorrar)
+    if (!productoABorrar){
+        res.status(204).json({"message":"Producto no encontrado"})
+    }
+
+    let indiceProductoABorrar = datos.productos.indexOf(productoABorrar)
+    try {
+         datos.productos.splice(indiceProductoABorrar, 1)
+    res.status(200).json({"message": "success"})
+
+    } catch (error) {
+        res.status(204).json({"message": "error"})
+    }
 })
 
 app.use((req, res) => {
