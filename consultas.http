@@ -1,29 +1,70 @@
-### Obtencion de todos los productos
+### Obtener lista de productos
 GET http://localhost:1234/productos/
 
-### Obtención de un producto específico
+### Obtener un producto por ID
+GET http://localhost:1234/productos/1
 
-GET http://localhost:1234/productos/3/
-
-### Agregado de un producto nuevo, el body lleva el json con el objeto
+### Crear un nuevo producto
 POST http://localhost:1234/productos
 Content-Type: application/json
 
 {
-    "id": 11,
-    "nombre": "Mixer multiuso ACME",
-    "tipo": "Electrodoméstico de cocina",
-    "precio": 150.15
+    "nombre": "Nuevo Producto",
+    "tipo": "Electrodoméstico",
+    "precio": 99.99
 }
 
-### Actualización de un producto, el body lleva solo el atributo a modificar
-
-PATCH http://localhost:1234/productos/10
+### Actualizar un producto por ID
+PATCH http://localhost:1234/productos/1
 Content-Type: application/json
 
 {
-    "nombre": "Mixer multiuso ACME PODEROSO"
+    "nombre": "Producto Actualizado"
 }
 
-### Borrado de un producto
-DELETE http://localhost:1234/productos/8
+### Borrar un producto por ID
+DELETE http://localhost:1234/productos/1
+
+### Obtener lista de usuarios
+GET http://localhost:1234/usuarios/
+
+### Obtener un usuario por ID
+GET http://localhost:1234/usuarios/1
+
+### Crear un nuevo usuario
+POST http://localhost:1234/usuarios
+Content-Type: application/json
+
+{
+    "nombre": "Nuevo Usuario",
+    "edad": 30,
+    "email": "nuevo@example.com",
+    "telefono": "+1 123-456-7890"
+}
+
+### Actualizar un usuario por ID
+PUT http://localhost:1234/usuarios/1
+Content-Type: application/json
+
+{
+    "nombre": "Usuario Actualizado",
+    "edad": 31
+}
+
+### Borrar un usuario por ID
+DELETE http://localhost:1234/usuarios/1
+
+### Obtener precio de un producto por ID
+GET http://localhost:1234/productos/1/precio
+
+### Obtener nombre de un producto por ID
+GET http://localhost:1234/productos/1/nombre
+
+### Obtener teléfono de un usuario por ID
+GET http://localhost:1234/usuarios/1/telefono
+
+### Obtener nombre de un usuario por ID
+GET http://localhost:1234/usuarios/1/nombre
+
+### Obtener el total del stock actual de productos
+GET http://localhost:1234/productos/stock-total
