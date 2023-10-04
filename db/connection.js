@@ -1,13 +1,16 @@
 import { Sequelize } from 'sequelize'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 // Creación de la instancia de Sequelize
 const db = new Sequelize(
-    'fflksous', // DB name
-    'fflksous', // User
-    '9TQY0g9JemUsljwU_myeOMJT1DmMO0ZS', // Password
+    process.env.DB_NAME, // DB name
+    process.env.DB_USERNAME, // User
+    process.env.DB_PASSWORD, // Password
     {
-  host: 'silly.db.elephantsql.com',
-  dialect: 'postgres',
+  host: process.env.DB_HOSTNAME,
+  dialect: process.env.DB_DIALECT,
   logging: true
 })
 
