@@ -8,12 +8,13 @@ GET http://localhost:1234/productos/3/
 ### Agregado de un producto nuevo, el body lleva el json con el objeto
 POST http://localhost:1234/productos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzdWFyaW8iOiJwYWJsb2FsZWphbmRyb2UiLCJuaXZlbCI6MSwiZXhwIjoxNjk2NTQ2OTA4ODcyLCJpYXQiOjE2OTY1NDY4NDh9.aFKLkTEtex16pRGj4vT1Dde76KyNEXCmxWwabS0uPvo
 
 {
-    "id": 11,
-    "nombre": "Mixer multiuso ACME",
-    "tipo": "Electrodoméstico de cocina",
-    "precio": 150.15
+    "id": 18,
+    "nombre": "Secador de Pelo marca SECAFUERTE",
+    "tipo": "Electrodoméstico de Baño",
+    "precio": 450.50
 }
 
 ### Actualización de un producto, el body lleva solo el atributo a modificar
@@ -27,3 +28,13 @@ Content-Type: application/json
 
 ### Borrado de un producto
 DELETE http://localhost:1234/productos/7
+
+
+### Request desde el formulario de logueo en el frontend
+POST http://localhost:1234/auth
+Content-Type: application/json
+
+    {
+        "usuario": "pabloalejandroe",
+        "password": "passwordpablo"
+    }
