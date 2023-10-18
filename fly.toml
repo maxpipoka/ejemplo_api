@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for api-ejemplo-fly-node on 2023-10-18T19:50:27-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "api-ejemplo-fly-node"
+primary_region = "scl"
+
+[build]
+
+[env]
+  PORT= "3000"
+  DB_NAME= "fflksous"
+  DB_USERNAME = "fflksous"
+  DB_PASSWORD = "9TQY0g9JemUsljwU_myeOMJT1DmMO0ZS"
+  DB_HOSTNAME = "silly.db.elephantsql.com"
+  DB_DIALECT = "postgres"
+  SECRET_KEY = "unacadenadetextocualquiera"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
