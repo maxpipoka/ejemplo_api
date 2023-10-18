@@ -14,7 +14,7 @@ const html = '<h1>Bienvenido a la API</h1><p>Los comandos disponibles son:</p><u
 
 const app = express()
 
-const exposedPort = 1234
+const exposedPort = process.env.PORT || 3000
 
 
 // Middleware para la validacion de los token recibidos
@@ -41,7 +41,7 @@ function autenticacionDeToken(req, res, next){
     }
 
     // Pasadas las validaciones
-    req.user = payload.sub
+    req.user = payload.sub // id usuario desde la DB
 
     next()
 }

@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
+import pg from 'pg'
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const db = new Sequelize(
     {
   host: process.env.DB_HOSTNAME,
   dialect: process.env.DB_DIALECT,
+  dialectModule: pg,
   logging: true
 })
 
