@@ -1,6 +1,9 @@
 ### Obtencion de todos los productos
 GET http://localhost:1234/productos/
 
+### Obtencion de todos los productos
+GET http://localhost:1234/usuarios/
+
 ### Obtención de un producto específico
 
 GET http://localhost:1234/productos/3/
@@ -8,11 +11,11 @@ GET http://localhost:1234/productos/3/
 ### Agregado de un producto nuevo, el body lleva el json con el objeto
 POST http://localhost:1234/productos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzdWFyaW8iOiJwYWJsb2FsZWphbmRyb2UiLCJuaXZlbCI6MSwiZXhwIjoxNjk2NTQ2OTA4ODcyLCJpYXQiOjE2OTY1NDY4NDh9.aFKLkTEtex16pRGj4vT1Dde76KyNEXCmxWwabS0uPvo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzdWFyaW8iOiJwYWJsb2FsZWphbmRyb2UiLCJuaXZlbCI6MSwiZXhwIjoxNjk4Mjc1OTc0OTI3LCJpYXQiOjE2OTgyNzU5MTR9.USulkS_zGv3HkJkaEdRFbRmpnmjRdkSyQTCNUkziN3E
 
 {
-    "id": 18,
-    "nombre": "Secador de Pelo marca SECAFUERTE",
+    "id": 22,
+    "nombre": "Tostadora grandota",
     "tipo": "Electrodoméstico de Baño",
     "precio": 450.50
 }
@@ -27,7 +30,10 @@ Content-Type: application/json
 }
 
 ### Borrado de un producto
-DELETE http://localhost:1234/productos/7
+DELETE http://localhost:1234/productos/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzdWFyaW8iOiJwYWJsb2FsZWphbmRyb2UiLCJuaXZlbCI6MSwiZXhwIjoxNjk4Mjc2MDk2NTU5LCJpYXQiOjE2OTgyNzYwMzZ9.CmW_mXbzRy820uYJFaxIaNf1jKjwEC0aZgyOzzswmek
+
 
 
 ### Request desde el formulario de logueo en el frontend
